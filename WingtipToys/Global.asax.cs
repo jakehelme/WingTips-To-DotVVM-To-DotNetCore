@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using WingtipToys.Logic;
 using WingtipToys.Models;
 
 namespace WingtipToys
@@ -21,6 +22,28 @@ namespace WingtipToys
 
             // Initialize the product database.
             Database.SetInitializer(new ProductDatabaseInitializer());
+
+            // Create the custom role and user.
+            RoleActions roleActions = new RoleActions();
+            roleActions.AddUserAndRole();
+
+            // Add Routes.
+            RegisterCustomRoutes(RouteTable.Routes);
+
+        }
+
+        void RegisterCustomRoutes(RouteCollection routes)
+        {
+            routes.MapPageRoute(
+                "ProductsByCategoryRoute",
+                "Category/{categoryName}",
+                "~/ProductList.aspx"
+            );
+            routes.MapPageRoute(
+                "ProductByNameRoute",
+                "Product/{productName}",
+                "~/ProductDetails.aspx"
+            );
         }
     }
 }
