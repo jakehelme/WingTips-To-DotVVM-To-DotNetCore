@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using WingtipToys.Models;
 using System.Web.ModelBinding;
 
 namespace WingtipToys
 {
-    public partial class ProductList : System.Web.UI.Page
+    public partial class ProductList : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,7 +15,7 @@ namespace WingtipToys
 
         public IQueryable<Product> GetProducts([QueryString("id")] int? categoryId, [RouteData] string categoryName)
         {
-            var _db = new WingtipToys.Models.ProductContext();
+            var _db = new ProductContext();
             IQueryable<Product> query = _db.Products;
 
             if (categoryId.HasValue && categoryId > 0)
@@ -26,10 +23,10 @@ namespace WingtipToys
                 query = query.Where(p => p.CategoryID == categoryId);
             }
 
-            if (!String.IsNullOrEmpty(categoryName))
+            if (!string.IsNullOrEmpty(categoryName))
             {
                 query = query.Where(p =>
-                    String.Compare(p.Category.CategoryName,
+                    string.Compare(p.Category.CategoryName,
                     categoryName) == 0);
             }
             return query;

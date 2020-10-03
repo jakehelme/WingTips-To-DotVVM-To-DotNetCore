@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using WingtipToys.Models;
 using System.Web.ModelBinding;
 
 namespace WingtipToys
 {
-    public partial class ProductDetails : System.Web.UI.Page
+    public partial class ProductDetails : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,10 +21,10 @@ namespace WingtipToys
             {
                 query = query.Where(p => p.ProductID == productId);
             }
-            else if (!String.IsNullOrEmpty(productName))
+            else if (!string.IsNullOrEmpty(productName))
             {
                 query = query.Where(p =>
-                      String.Compare(p.ProductName, productName) == 0);
+                      string.Compare(p.ProductName, productName) == 0);
             }
             else
             {

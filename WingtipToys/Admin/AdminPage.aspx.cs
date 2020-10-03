@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using WingtipToys.Models;
 using WingtipToys.Logic;
+using WingtipToys.Models;
 
 namespace WingtipToys.Admin
 {
@@ -27,12 +23,12 @@ namespace WingtipToys.Admin
 
         protected void AddProductButton_Click(object sender, EventArgs e)
         {
-            Boolean fileOK = false;
-            String path = Server.MapPath("~/Catalog/Images/");
+            bool fileOK = false;
+            string path = Server.MapPath("~/Catalog/Images/");
             if (ProductImage.HasFile)
             {
-                String fileExtension = System.IO.Path.GetExtension(ProductImage.FileName).ToLower();
-                String[] allowedExtensions = { ".gif", ".png", ".jpeg", ".jpg" };
+                string fileExtension = System.IO.Path.GetExtension(ProductImage.FileName).ToLower();
+                string[] allowedExtensions = { ".gif", ".png", ".jpeg", ".jpg" };
                 for (int i = 0; i < allowedExtensions.Length; i++)
                 {
                     if (fileExtension == allowedExtensions[i])
@@ -79,21 +75,21 @@ namespace WingtipToys.Admin
 
         public IQueryable GetCategories()
         {
-            var _db = new WingtipToys.Models.ProductContext();
+            var _db = new ProductContext();
             IQueryable query = _db.Categories;
             return query;
         }
 
         public IQueryable GetProducts()
         {
-            var _db = new WingtipToys.Models.ProductContext();
+            var _db = new ProductContext();
             IQueryable query = _db.Products;
             return query;
         }
 
         protected void RemoveProductButton_Click(object sender, EventArgs e)
         {
-            using (var _db = new WingtipToys.Models.ProductContext())
+            using (var _db = new ProductContext())
             {
                 int productId = Convert.ToInt16(DropDownRemoveProduct.SelectedValue);
                 var myItem = (from c in _db.Products where c.ProductID == productId select c).FirstOrDefault();

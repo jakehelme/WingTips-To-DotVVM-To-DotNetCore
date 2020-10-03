@@ -18,7 +18,7 @@ namespace WingtipToys
                 if (cartTotal > 0)
                 {
                     // Display Total.
-                    lblTotal.Text = String.Format("{0:c}", cartTotal);
+                    lblTotal.Text = string.Format("{0:c}", cartTotal);
                 }
                 else
                 {
@@ -40,7 +40,7 @@ namespace WingtipToys
         {
             using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())
             {
-                String cartId = usersShoppingCart.GetCartId();
+                string cartId = usersShoppingCart.GetCartId();
 
                 ShoppingCartActions.ShoppingCartUpdates[] cartUpdates = new ShoppingCartActions.ShoppingCartUpdates[CartList.Rows.Count];
                 for (int i = 0; i < CartList.Rows.Count; i++)
@@ -59,7 +59,7 @@ namespace WingtipToys
                 }
                 usersShoppingCart.UpdateShoppingCartDatabase(cartId, cartUpdates);
                 CartList.DataBind();
-                lblTotal.Text = String.Format("{0:c}", usersShoppingCart.GetTotal());
+                lblTotal.Text = string.Format("{0:c}", usersShoppingCart.GetTotal());
                 return usersShoppingCart.GetCartItems();
             }
         }

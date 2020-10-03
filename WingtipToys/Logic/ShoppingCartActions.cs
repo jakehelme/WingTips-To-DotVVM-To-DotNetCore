@@ -105,9 +105,9 @@ namespace WingtipToys.Logic
             }
         }
 
-        public void UpdateShoppingCartDatabase(String cartId, ShoppingCartUpdates[] CartItemUpdates)
+        public void UpdateShoppingCartDatabase(string cartId, ShoppingCartUpdates[] CartItemUpdates)
         {
-            using (var db = new WingtipToys.Models.ProductContext())
+            using (var db = new ProductContext())
             {
                 try
                 {
@@ -141,7 +141,7 @@ namespace WingtipToys.Logic
 
         public void RemoveItem(string removeCartID, int removeProductID)
         {
-            using (var _db = new WingtipToys.Models.ProductContext())
+            using (var _db = new ProductContext())
             {
                 try
                 {
@@ -162,7 +162,7 @@ namespace WingtipToys.Logic
 
         public void UpdateItem(string updateCartID, int updateProductID, int quantity)
         {
-            using (var _db = new WingtipToys.Models.ProductContext())
+            using (var _db = new ProductContext())
             {
                 try
                 {

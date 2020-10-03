@@ -4,10 +4,6 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using WingtipToys.Models;
-
 namespace WingtipToys.Models
 {
     // You can add User data for the user by adding more properties to your User class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
@@ -86,7 +82,7 @@ namespace WingtipToys
 
         public static void RedirectToReturnUrl(string returnUrl, HttpResponse response)
         {
-            if (!String.IsNullOrEmpty(returnUrl) && IsLocalUrl(returnUrl))
+            if (!string.IsNullOrEmpty(returnUrl) && IsLocalUrl(returnUrl))
             {
                 response.Redirect(returnUrl);
             }

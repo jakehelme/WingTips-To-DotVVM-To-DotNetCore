@@ -9,7 +9,7 @@ namespace WingtipToys.Logic
         internal void AddUserAndRole()
         {
             // Access the application context and create result variables.
-            Models.ApplicationDbContext context = new ApplicationDbContext();
+            ApplicationDbContext context = new ApplicationDbContext();
             IdentityResult IdRoleResult;
             IdentityResult IdUserResult;
 
